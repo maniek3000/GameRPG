@@ -1,13 +1,12 @@
 package player;
 
-import player.playerClasses.Classes;
 
 public class Player {
     private String name;
     private int maxHp = 100;
     private int hp = maxHp;
-    int maxMp;
-    int mp;
+    private int maxMp;
+    private int mp;
     private int defence = 5;
     private int minPower = 7;
     private int maxPower = 12;
@@ -37,10 +36,6 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getMaxHp() {
         return maxHp;
     }
@@ -57,7 +52,7 @@ public class Player {
         this.hp = hp;
     }
 
-        public int getDefence() {
+    public int getDefence() {
         return defence;
     }
 
