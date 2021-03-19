@@ -1,5 +1,6 @@
 package fight;
 
+import enemies.Enemy;
 import fight.cases.Attack;
 import fight.cases.Backpack;
 import fight.cases.Run;
@@ -8,34 +9,36 @@ import gameStart.Game;
 import java.util.Scanner;
 
 public class MenuFight {
-    Scanner scanner = new Scanner(System.in);
-    Attack a = new Attack();
-    Backpack b = new Backpack();
-    Run r = new Run();
+    private static Scanner scanner = new Scanner(System.in);
+    private static int i = 1;
 
-    public void menuFight() {
-        System.out.println("22");
-        while (true) {
+    public static void menuFight(Enemy enemy) {
+
+        while (i != -1) {
             menuText();
-            int i = scanner.nextInt();
+            i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    a.attack();
+                    Attack.attack(enemy);
                     break;
                 case 2:
-                    b.backpack();
+                    Backpack.backpack();
                     break;
                 case 3:
-                    r.run();
+                    Run.run(enemy);
                     break;
-
             }
         }
     }
 
-    private void menuText() {
+    private static void menuText() {
         System.out.println("1- Atakuj");
         System.out.println("2- Zajrzyj do plecaka");
         System.out.println("3- Uciekaj");
+    }
+
+
+    public static void setI(int x) {
+        MenuFight.i = x;
     }
 }

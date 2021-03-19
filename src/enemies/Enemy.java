@@ -1,4 +1,6 @@
 package enemies;
+//TODO dorobić więcej wrogów
+import player.Player;
 
 public class Enemy {
     private String name;
@@ -12,6 +14,34 @@ public class Enemy {
 
 
     public Enemy(){}
+
+    public void attack(){
+        int less= this.power- Player.getDefence();
+        if (less>0){
+        System.out.println(this.getName()+ " zadaje obrażenia równe "+less+". Pozostało Ci "+ (Player.getHp()-less)+"/"+ Player.getMaxHp()+" pkt życia.");
+        Player.lessHp(less);}
+        else System.out.println(getName()+" pudłuje.");
+    }
+
+    public void lessHp(int x){
+        if (hp<x) {
+            hp=0;
+            System.out.println(getName() + " padł i raczej prędko nie wstanie");
+        }else{
+            hp-=x;
+            System.out.println(getName()+" otrzymuje obrażenia równe "+x+". Zostało mu "+hp+"/"+maxHp+" pkt życia.");
+        }
+                }
+
+    public void moreHp(int x){
+        if (hp+x<maxHp) {
+            hp+=x;
+            System.out.println("Życie przeciwnika wzrasta o "+x+" i wynosi "+hp+"/"+maxHp+".");
+        }else{
+            hp=maxHp;
+            System.out.println(getName()+" całkowicie się leczy. Jego życie wynosi"+hp+"/"+maxHp+" pkt życia.");
+        }
+    }
 
     public String getName() {
         return name;

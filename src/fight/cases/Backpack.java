@@ -1,8 +1,8 @@
 package fight.cases;
+//TODO zrób klasę plecak ale ma być ona też użyta poza walką więc musi być tutaj jakiś if...
+public  class Backpack {
 
-public class Backpack {
-
-    public void backpack(){
+    public static void backpack(){
 
     }
 

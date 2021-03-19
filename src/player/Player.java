@@ -2,86 +2,132 @@ package player;
 
 
 public class Player {
-    private String name;
-    private int maxHp = 100;
-    private int hp = maxHp;
-    private int maxMp;
-    private int mp;
-    private int defence = 5;
-    private int minPower = 7;
-    private int maxPower = 12;
-    private double criticChance = 0.1;
+    private static String name;
+    private static int maxHp = 100;
+    private static int hp = maxHp;
+    private static int maxMp = 0;
+    private static int mp = 0;
+    private static int defence = 5;
+    private static int minPower = 7;
+    private static int maxPower = 12;
+    private static double criticChance = 1;
 
     public Player(String name) {
         this.name = name;
     }
 
-    public int getMp() {
+    public static int averagePower(){
+        int differentOfPowers=maxPower-minPower+1;
+        return minPower+(int)(Math.random()*differentOfPowers);
+    }
+
+    public static int getMp() {
         return mp;
     }
 
-    public void setMp(int mp) {
-        this.mp = mp;
+    public static void setMp(int smp) {
+        mp = smp;
     }
 
-    public int getMaxMp() {
+    public static int getMaxMp() {
         return maxMp;
     }
 
-    public void setMaxMp(int maxMp) {
-        this.maxMp = maxMp;
+    public static void setMaxMp(int smaxMp) {
+        maxMp = smaxMp;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public int getMaxHp() {
+    public static int getMaxHp() {
         return maxHp;
     }
 
-    public void setMaxHp(int maxHp) {
-        this.maxHp = maxHp;
+    public static void setMaxHp(int smaxHp) {
+        maxHp = smaxHp;
     }
 
-    public int getHp() {
+    public static int getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
+    public static void setHp(int shp) {
+        hp = shp;
     }
 
-    public int getDefence() {
+    public static int getDefence() {
         return defence;
     }
 
-    public void setDefence(int defence) {
-        this.defence = defence;
+    public static void setDefence(int sdefence) {
+        defence = sdefence;
     }
 
-    public int getMinPower() {
+    public static int getMinPower() {
         return minPower;
     }
 
-    public void setMinPower(int minPower) {
-        this.minPower = minPower;
+    public static void setMinPower(int sminPower) {
+        minPower = sminPower;
     }
 
-    public int getMaxPower() {
+    public static int getMaxPower() {
         return maxPower;
     }
 
-    public void setMaxPower(int maxPower) {
-        this.maxPower = maxPower;
+    public static void setMaxPower(int smaxPower) {
+        maxPower = smaxPower;
     }
 
-    public double getCriticChance() {
+    public static double getCriticChance() {
         return criticChance;
     }
 
-    public void setCriticChance(double criticChance) {
-        this.criticChance = criticChance;
+    public static void setCriticChance(double scriticChance) {
+        criticChance = scriticChance;
+    }
+
+    public static void lessHp(int x) {
+        if (getHp() > x) {
+            setHp(getHp() - x);
+        } else {
+            System.out.println("Ojoj...Przegrałeś... Nawet nie wiesz jak mi bardzo... wszystko jedno...");
+            System.out.println("GAME OVER");
+            System.exit(0);
+        }
+    }
+
+    public static void moreHp(int x) {
+        if (getHp() + x < getMaxHp()) {
+            setHp(getHp() + x);
+            System.out.println("Wyleczono "+x+" pkt życia. Twoje życie wynosi " + getHp() + "/" + getMaxHp() + " pkt.");
+        } else {
+            setHp(getMaxHp());
+            System.out.println("Wyleczono całkowicie. Twoje życie wynosi " + getHp() + "/" + getMaxHp() + " pkt.");
+
+        }
+    }
+
+    public static void lessMp(int x) {
+        if (getMp() > x) {
+            setMp(getMp() - x);
+            System.out.println(" Twoja mana wynosi " + getMp() + "/" + getMaxMp() + " pkt.");
+        } else {
+            System.out.println("Za mało many");
+        }
+    }
+
+    public static void moreMp(int x) {
+        if (getMp() + x < getMaxMp()) {
+            setMp(getMp() + x);
+            System.out.println("Twoja mana wynosi " + getMp() + "/" + getMaxMp() + " pkt.");
+        } else {
+            setMp(getMaxMp());
+            System.out.println("Twoja mana wynosi " + getMp() + "/" + getMaxMp() + " pkt.");
+
+        }
     }
 
 }

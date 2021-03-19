@@ -8,12 +8,12 @@ import player.playerClasses.Classes;
 import java.util.Scanner;
 
 public class NewPlayer {
-    private String name;
-    private Scanner scanner;
-    private Classes classes;
+    private static String name;
+    private static Scanner scanner;
+    private static Classes classes;
 
 
-    public Player createPlayer() {
+    public static Player createPlayer() {
         classes = choiseClass();
         System.out.print("Podaj swoje imię bohaterze: ");
         scanner = new Scanner(System.in);
@@ -26,7 +26,7 @@ public class NewPlayer {
             return new ClassTank(name);
     }
 
-    private Classes choiseClass() {
+    private static Classes choiseClass() {
         System.out.println("Wybierz klasę: ");
         System.out.println("1- WOJOWNIK- Wojownicy szczycą się wielką siłą");
         System.out.println("2- MAG- Magowie władają tajemną siłą");
